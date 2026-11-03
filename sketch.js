@@ -1,18 +1,20 @@
-let ball;
+let bob;
+let pivot;
 
 function setup() {
-  createCanvas(400, 200);
+  createCanvas(400, 300);
 
-  ball = new Particle();
+  pivot = createVector(width / 2, 30);   // 진자가 매달린 점
+  bob = new Particle(pivot, 180);        // 줄 길이 180
 }
-
 
 function draw() {
   background(220);
 
   let gravity = createVector(0, 0.3);
-  ball.addForce(gravity);
+  bob.addForce(gravity);
 
-  ball.update();
-  ball.show();
+  bob.checkTouch();   // 마우스로 건드렸는지 확인
+  bob.update();
+  bob.show();
 }
